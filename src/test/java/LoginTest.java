@@ -56,8 +56,8 @@ public class LoginTest {
     public void testValidLogin() {
         loginPage.login("Osanda", "MaxSoft123");
         HomePage homePage = new HomePage(driver);
-        Assert.assertEquals(homePage.getGreetingLabelText(), "Hi Osanda!");
-        Assert.assertEquals(homePage.getWelcomeLabelText(), "Welcome to the Home");
+        Assert.assertEquals(homePage.getGreetingLabelText(), "Hi Osanda,");
+        Assert.assertEquals(homePage.getWelcomeLabelText(), "Welcome!");
     }
 
     @Test(description = "Verify that a user cannot login to the application with invalid credentials")
