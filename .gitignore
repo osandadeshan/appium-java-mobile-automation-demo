@@ -1,4 +1,5 @@
 /.idea
+/reports/
 /target
 /test-output
 *.iml

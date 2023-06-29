@@ -8,22 +8,70 @@
     <artifactId>appium-page-object-demo</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <platform>android</platform>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <maven.surefire.plugin.version>3.0.0-M5</maven.surefire.plugin.version>
+        <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
+        <appium.java.client.version>7.0.0</appium.java.client.version>
+        <testng.version>7.0.0</testng.version>
+        <maxsoft.testng.test.results.analyzer.version>1.2.0</maxsoft.testng.test.results.analyzer.version>
+        <mockneat.version>0.4.8</mockneat.version>
+        <regression.suite.testng.xml>src/test/resources/regression-suite.xml</regression.suite.testng.xml>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven.surefire.plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.plugin.version}</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <dependencies>
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
-            <version>7.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>3.141.59</version>
+            <version>${appium.java.client.version}</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>6.14.3</version>
+            <version>${testng.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.osandadeshan</groupId>
+            <artifactId>maxsoft-testng-test-results-analyzer</artifactId>
+            <version>${maxsoft.testng.test.results.analyzer.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.andreinc</groupId>
+            <artifactId>mockneat</artifactId>
+            <version>${mockneat.version}</version>
         </dependency>
     </dependencies>
 
