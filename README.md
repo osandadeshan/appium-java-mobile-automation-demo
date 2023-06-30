@@ -11,9 +11,11 @@
 3. Create a new system variable for `ANDROID_HOME` pointed to the Android SDK location.
 4. Update the system path variable with `ANDROID_HOME\platform-tools`
 5. Install Appium 2.0
+
    `npm i -g appium@next`
 
 Note: Environment Variables
+
 ![image](https://user-images.githubusercontent.com/9147189/249979741-757ff724-a75e-4d3b-934f-e6af73d630e2.png)
 
 ## How to run tests
@@ -23,8 +25,10 @@ Note: Environment Variables
    * Right-click and click on `Run tests`
 2. Using Command Line
    * For Android Tests
+
      `mvn clean test -Dplatform=android`
    * For iOS Tests
+
      `mvn clean test -Dplatform=ios`
 
 ## Copyright
