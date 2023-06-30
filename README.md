@@ -1,14 +1,14 @@
 # Mobile Application Automation Using Appium (For iOS & Android)
 
-## Pre Requisites
+## Prerequisites
 1. Java
 2. Maven
 3. NodeJS
 
-## How to install the Dependencies
+## How to install the dependencies
 1. Install [XCode](https://apps.apple.com/us/app/xcode/id497799835?mt=12 "XCode")
 2. Download and Install [Android Studio](https://developer.android.com/codelabs/basic-android-kotlin-compose-install-android-studio "Android Studio")
-3. Create a new system variable for `ANDROID_HOME` pointed to the Android SDK location.
+3. Create a new system variable for `ANDROID_HOME` pointed to the Android SDK location
 4. Update the system path variable with `ANDROID_HOME\platform-tools`
 5. Install Appium 2.0
 
