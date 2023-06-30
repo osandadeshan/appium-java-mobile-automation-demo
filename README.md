@@ -1,5 +1,7 @@
 # Mobile Application Automation Using Appium (For iOS & Android)
 
+This project serves as a boilerplate for automating both Android and iOS mobile applications using a single codebase with TestNG and the Appium library.
+
 ## Prerequisites
 1. Java
 2. Maven
