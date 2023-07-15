@@ -16,6 +16,12 @@ This project serves as a boilerplate for automating both Android and iOS mobile 
 
    `npm i -g appium@next`
 
+6. Install Appium Drivers 
+
+    `appium driver install uiautomator2`
+    
+    `appium driver install xcuitest`
+
 Note: Environment Variables
 
 ![image](https://user-images.githubusercontent.com/9147189/249979741-757ff724-a75e-4d3b-934f-e6af73d630e2.png)
