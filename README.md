@@ -39,6 +39,10 @@ Note: Environment Variables
 
      `mvn clean test -Dplatform=ios`
 
+## Tutorials
+- [Appium Mobile App Automation — Tutorial 1](https://medium.com/automationmaster/appium-mobile-app-automation-406bf8b0fd80)
+- [Appium Mobile App Automation — Tutorial 2](https://medium.com/automationmaster/appium-mobile-app-automation-tutorial-2-527d6d78998a)
+
 ## License
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/License_icon-mit-2.svg/2000px-License_icon-mit-2.svg.png" alt="MIT License" width="100" height="100"/> [MIT License](https://opensource.org/licenses/MIT)
 
