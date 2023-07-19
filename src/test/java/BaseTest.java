@@ -1,19 +1,24 @@
+import com.maxsoft.testngtestresultsanalyzer.DriverHolder;
 import com.maxsoft.testngtestresultsanalyzer.TestAnalyzeReportListener;
 import common.ScreenProvider;
 import common.UiComponentProvider;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Listeners;
 import util.driver.MobileDriverFactory;
-import util.driver.MobileDriverHolder;
 import util.driver.MobileDriverService;
 
-import static com.maxsoft.testngtestresultsanalyzer.DriverHolder.getDriver;
-import static com.maxsoft.testngtestresultsanalyzer.DriverHolder.setDriver;
+import static common.constants.CommonConstants.EXECUTION_ENV_NAME;
+import static common.constants.CommonConstants.MOBILE_PLATFORM_NAME;
 import static java.util.concurrent.TimeUnit.SECONDS;
+import static util.driver.MobileDriverHolder.getDriver;
+import static util.driver.MobileDriverHolder.setDriver;
 
 /**
- * Project Name    : appium-page-object-demo
+ * Project Name    : appium-java-mobile-automation-demo
  * Developer       : Osanda Deshan
  * Version         : 1.0.0
  * Date            : 15/6/23
@@ -25,13 +30,20 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 public class BaseTest {
     private final MobileDriverFactory driverFactory = new MobileDriverFactory();
     private final MobileDriverService driverService = driverFactory.getDriverService();
+    private final Logger logger = LogManager.getLogger();
+
+    @BeforeSuite
+    public void oneTimeSetup() {
+        logger.debug("Test execution platform: {}", MOBILE_PLATFORM_NAME);
+        logger.debug("Test execution environment: {}", EXECUTION_ENV_NAME);
+    }
 
     @BeforeMethod
-    public void setUp() {
+    public void openApp() {
         driverService.spinUpDriver();
-        MobileDriverHolder.setDriver(driverService.getDriver());
-        setDriver(MobileDriverHolder.getDriver());
-        MobileDriverHolder.getDriver().manage().timeouts().implicitlyWait(30, SECONDS);
+        setDriver(driverService.getDriver());
+        DriverHolder.setDriver(getDriver());
+        getDriver().manage().timeouts().implicitlyWait(30, SECONDS);
     }
 
     public ScreenProvider screen() {
@@ -43,7 +55,7 @@ public class BaseTest {
     }
 
     @AfterMethod
-    public void tearDown() {
+    public void closeApp() {
         driverService.closeDriver();
     }
 }

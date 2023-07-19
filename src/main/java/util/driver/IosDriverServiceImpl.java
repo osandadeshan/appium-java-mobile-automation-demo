@@ -14,7 +14,7 @@ import static io.appium.java_client.remote.MobileCapabilityType.*;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 /**
- * Project Name    : appium-page-object-demo
+ * Project Name    : appium-java-mobile-automation-demo
  * Developer       : Osanda Deshan
  * Version         : 1.0.0
  * Date            : 19/6/23
@@ -33,8 +33,7 @@ public class IosDriverServiceImpl implements MobileDriverService {
         capabilities.setCapability(AUTOMATION_NAME, IOS_AUTOMATION_NAME);
         capabilities.setCapability(PLATFORM_NAME, IOS);
         capabilities.setCapability(PLATFORM_VERSION, IOS_PLATFORM_VERSION);
-        capabilities.setCapability(APP, new File(System.getProperty("user.dir") + IOS_APP_FILE_PATH)
-                .getAbsolutePath());
+        capabilities.setCapability(APP, new File(IOS_APP_FILE_PATH).getAbsolutePath());
         capabilities.setCapability("appium:shouldTerminateApp", IOS_SHOULD_TERMINATE_APP);
         capabilities.setCapability(NO_RESET, IOS_NO_RESET);
         capabilities.setCapability(FULL_RESET, IOS_FULL_RESET);

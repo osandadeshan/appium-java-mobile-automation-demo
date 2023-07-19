@@ -1,9 +1,9 @@
 package common.constants;
 
-import static util.PropertyFileReader.getPropertyValue;
+import static util.Reader.getEnvironmentConfig;
 
 /**
- * Project Name    : appium-page-object-demo
+ * Project Name    : appium-java-mobile-automation-demo
  * Developer       : Osanda Deshan
  * Version         : 1.0.0
  * Date            : 22/6/23
@@ -12,10 +12,6 @@ import static util.PropertyFileReader.getPropertyValue;
  **/
 
 public class LoginConstants {
-    // Login Data Property File Path
-    public static final String LOGIN_DATA_PROPERTY_FILE_PATH = "test_data/login_data.properties";
-
-    // Login Credentials
-    public static final String EMAIL_ADDRESS = getPropertyValue(LOGIN_DATA_PROPERTY_FILE_PATH, "email_address");
-    public static final String PASSWORD = getPropertyValue(LOGIN_DATA_PROPERTY_FILE_PATH, "password");
+    public static final String EMAIL_ADDRESS = getEnvironmentConfig("email_address");
+    public static final String PASSWORD = getEnvironmentConfig("password");
 }

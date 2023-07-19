@@ -2,4 +2,5 @@
 /reports/
 /target
 /test-output
+/logs/
 *.iml

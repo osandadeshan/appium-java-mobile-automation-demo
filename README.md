@@ -28,16 +28,22 @@ Note: Environment Variables
 
 ## How to run tests
 1. Using IntelliJ IDEA
-   * Change the **"platform"** variable on ***"util.driver.MobileDriverFactory"*** 20th line to `Android` or `iOS`
-   * Select the test classes on the `src/test/java` folder.
-   * Right-click and click on `Run tests`
+   * Go to Maven Profiles
+   * Select `android` or `ios` Maven Profile as the platform
+   * Select `dev`, `qa`, `uat`, `pre-prod` or `prod` as the environment
+   * Select the test classes on the `src/test/java` folder
+   * Right-click and click on `Run`
+
+
 2. Using Command Line
-   * For Android Tests
+   * To run Android tests in QA environment
 
-     `mvn clean test -Dplatform=android`
-   * For iOS Tests
+     `mvn clean test -Pandroid,qa`
+   * To run iOS tests in uat environment
 
-     `mvn clean test -Dplatform=ios`
+     `mvn clean test -Pios,uat`
+
+**Note**: By default, if no Maven profiles are selected, the tests will be executed on the 'android' platform and in the 'dev' environment.
 
 ## Tutorials
 - [Appium Mobile App Automation — Tutorial 1](https://medium.com/automationmaster/appium-mobile-app-automation-406bf8b0fd80)

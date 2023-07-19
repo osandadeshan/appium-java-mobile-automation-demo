@@ -6,7 +6,7 @@ import static common.constants.LoginConstants.PASSWORD;
 import static org.testng.Assert.assertEquals;
 
 /**
- * Project Name    : appium-page-object-demo
+ * Project Name    : appium-java-mobile-automation-demo
  * Developer       : Osanda Deshan
  * Version         : 1.0.0
  * Date            : 3/21/2021

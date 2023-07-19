@@ -16,7 +16,7 @@ import static io.appium.java_client.remote.MobileCapabilityType.*;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 /**
- * Project Name    : appium-page-object-demo
+ * Project Name    : appium-java-mobile-automation-demo
  * Developer       : Osanda Deshan
  * Version         : 1.0.0
  * Date            : 19/6/23
@@ -35,8 +35,7 @@ public class AndroidDriverServiceImpl implements MobileDriverService {
         capabilities.setCapability(AUTOMATION_NAME, ANDROID_AUTOMATION_NAME);
         capabilities.setCapability(PLATFORM_NAME, ANDROID);
         capabilities.setCapability(PLATFORM_VERSION, ANDROID_PLATFORM_VERSION);
-        capabilities.setCapability(APP, new File(System.getProperty("user.dir") + ANDROID_APP_FILE_PATH)
-                .getAbsolutePath());
+        capabilities.setCapability(APP, new File(ANDROID_APP_FILE_PATH).getAbsolutePath());
         capabilities.setCapability(APP_PACKAGE, ANDROID_APP_PACKAGE);
         capabilities.setCapability(APP_ACTIVITY, ANDROID_APP_ACTIVITY);
         capabilities.setCapability(NO_RESET, ANDROID_NO_RESET);

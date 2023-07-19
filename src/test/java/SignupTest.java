@@ -6,7 +6,7 @@ import static net.andreinc.mockneat.unit.user.Emails.emails;
 import static org.testng.Assert.assertEquals;
 
 /**
- * Project Name    : appium-page-object-demo
+ * Project Name    : appium-java-mobile-automation-demo
  * Developer       : Osanda Deshan
  * Version         : 1.0.0
  * Date            : 22/6/23

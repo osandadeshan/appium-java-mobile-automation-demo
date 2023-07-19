@@ -1,11 +1,10 @@
 package screens;
 
 import io.appium.java_client.MobileBy;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 /**
- * Project Name    : appium-page-object-demo
+ * Project Name    : appium-java-mobile-automation-demo
  * Developer       : Osanda Deshan
  * Version         : 1.0.0
  * Date            : 6/15/2023
@@ -14,19 +13,12 @@ import org.openqa.selenium.WebDriver;
  **/
 
 public class LoginScreen extends BaseScreen {
-    private final By signUpContainer = MobileBy.AccessibilityId("button-sign-up-container");
-    private final By emailAddressTextBox = MobileBy.AccessibilityId("input-email");
-    private final By passwordTextBox = MobileBy.AccessibilityId("input-password");
-    private final By confirmPasswordTextBox = MobileBy.AccessibilityId("input-repeat-password");
-    private final By signupButton = MobileBy.AccessibilityId("button-SIGN UP");
-    private final By loginButton = MobileBy.AccessibilityId("button-LOGIN");
-
     public LoginScreen(WebDriver driver) {
         super(driver);
     }
 
     public LoginScreen tapOnSignUpContainer() {
-        tap(signUpContainer);
+        tap(MobileBy.AccessibilityId("button-sign-up-container"));
         return this;
     }
 
@@ -44,22 +36,22 @@ public class LoginScreen extends BaseScreen {
     }
 
     private void inputEmailAddress(String emailAddress) {
-        inputText(emailAddressTextBox, emailAddress);
+        inputText(MobileBy.AccessibilityId("input-email"), emailAddress);
     }
 
     private void inputPassword(String password) {
-        inputText(passwordTextBox, password);
+        inputText(MobileBy.AccessibilityId("input-password"), password);
     }
 
     private void inputConfirmPassword(String confirmPassword) {
-        inputText(confirmPasswordTextBox, confirmPassword);
+        inputText(MobileBy.AccessibilityId("input-repeat-password"), confirmPassword);
     }
 
     private void tapOnLoginButton() {
-        tap(loginButton);
+        tap(MobileBy.AccessibilityId("button-LOGIN"));
     }
 
     private void tapOnSignUpButton() {
-        tap(signupButton);
+        tap(MobileBy.AccessibilityId("button-SIGN UP"));
     }
 }
