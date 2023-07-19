@@ -37,13 +37,11 @@ Note: Environment Variables
 
 2. Using Command Line
    * To run Android tests in QA environment
-
      `mvn clean test -Pandroid,qa`
-   * To run iOS tests in uat environment
-
+   * To run iOS tests in UAT environment
      `mvn clean test -Pios,uat`
 
-**Note**: By default, if no Maven profiles are selected, the tests will be executed on the 'android' platform and in the 'dev' environment.
+**Note**: By default, if no Maven profiles are selected, the tests will be executed on the `android` platform and in the `dev` environment.
 
 ## Tutorials
 - [Appium Mobile App Automation — Tutorial 1](https://medium.com/automationmaster/appium-mobile-app-automation-406bf8b0fd80)
