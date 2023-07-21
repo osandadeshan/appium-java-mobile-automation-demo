@@ -42,7 +42,7 @@ public class BaseTest {
     public void openApp() {
         driverService.spinUpDriver();
         setDriver(driverService.getDriver());
-        DriverHolder.setDriver(getDriver());
+        DriverHolder.setDriver(getDriver());    // Setting the driver for the html-reporter library
         getDriver().manage().timeouts().implicitlyWait(30, SECONDS);
     }
 
