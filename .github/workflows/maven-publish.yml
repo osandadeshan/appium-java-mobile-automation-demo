@@ -1,0 +1,42 @@
+# GitHub Workflow to build a Maven project & run the Appium tests using an Android device.
+# Tools & technologies used for the automation project: TestNG, Appium, Maven, Java and Android.
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+
+name: Appium Java Android Application Automation CI
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  build:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        api-level: [33]  
+        target: [default]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up JDK 1.8
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.8
+    - uses: actions/setup-node@v2
+      with:
+       node-version: '12'
+    - run: |
+            npm install -g appium@next
+            appium -v
+            appium &>/dev/null &
+    - name: Run Appium Tests
+      uses: reactivecircus/android-emulator-runner@v1
+      with:
+        api-level: ${{ matrix.api-level }}
+        target: ${{ matrix.target }}
+        arch: x86_64
+        profile: Nexus 6
+        script: mvn clean test -Pandroid,qa
