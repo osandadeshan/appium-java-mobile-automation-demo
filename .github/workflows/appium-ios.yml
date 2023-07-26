@@ -34,8 +34,7 @@ jobs:
             appium &>/dev/null &
     
     - name: Run Appium iOS Tests
-      with:
-        script: mvn clean test -Pandroid,qa
+      run: mvn clean test -Pios,qa
       
     - name: Archive Test Reports
       uses: actions/upload-artifact@v3
