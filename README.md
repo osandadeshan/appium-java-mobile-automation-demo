@@ -1,4 +1,4 @@
-# Mobile Application Automation Using Appium (For iOS & Android)
+# Mobile Application Automation Using Appium & TestNG (For iOS & Android)
 
 This project serves as a boilerplate for automating both Android and iOS mobile applications using a single codebase with TestNG and the Appium library.
 
