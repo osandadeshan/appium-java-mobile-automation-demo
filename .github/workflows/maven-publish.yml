@@ -18,7 +18,6 @@ jobs:
     strategy:
       matrix:
         api-level: [29]  
-        target: [default]
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 1.8
@@ -36,7 +35,4 @@ jobs:
       uses: reactivecircus/android-emulator-runner@v2
       with:
         api-level: ${{ matrix.api-level }}
-        target: ${{ matrix.target }}
-        arch: x86_64
-        profile: Nexus 6
         script: mvn clean test -Pandroid,qa
