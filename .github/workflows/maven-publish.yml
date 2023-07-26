@@ -18,8 +18,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    # Setup Java, Appium, Android Driver and iOS Driver
-    - name: Set up JDK 11
+    - name: Setup Java, Appium, Android Driver and iOS Driver
       uses: actions/setup-java@v3
       with:
         java-version: '11'
@@ -35,15 +34,13 @@ jobs:
             appium driver install xcuitest
             appium &>/dev/null &
     
-    # Run Appium Android Tests
-    - name: Run Appium Tests
+    - name: Run Appium Android Tests
       uses: reactivecircus/android-emulator-runner@v2
       with:
         api-level: 29
         script: mvn clean test -Pandroid,qa
       
-    # Archive the "reports" Folder
-    - name: Archive test reports
+    - name: Archive Test Reports
       uses: actions/upload-artifact@v3
       with:
         name: test-reports
