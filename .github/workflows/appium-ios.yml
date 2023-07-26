@@ -1,0 +1,44 @@
+# GitHub Workflow to build a Maven project & run the Appium tests using an iOS device.
+# Tools & technologies used for the automation project: TestNG, Appium, Maven, Java, Android and iOS.
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+
+name: Appium Java iOS Application Automation CI
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  build-and-test:
+    runs-on: macos-latest 
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Java, Appium and iOS Driver
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        cache: maven
+    - uses: actions/setup-node@v3
+      with:
+       node-version: '20'
+    - run: |
+            npm install -g appium@next
+            appium -v
+            appium driver install xcuitest
+            appium &>/dev/null &
+    
+    - name: Run Appium iOS Tests
+      with:
+        script: mvn clean test -Pandroid,qa
+      
+    - name: Archive Test Reports
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-reports
+        path: reports
