@@ -1,8 +1,8 @@
-package screens.uicomponents;
+package screen.uicomponent;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import screens.BaseScreen;
+import screen.BaseScreen;
 
 /**
  * Project Name    : appium-java-mobile-automation-demo

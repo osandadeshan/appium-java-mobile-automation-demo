@@ -1,4 +1,4 @@
-package common.constants;
+package common.constant;
 
 /**
  * Project Name    : appium-java-mobile-automation-demo

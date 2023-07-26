@@ -1,4 +1,4 @@
-package common.constants;
+package common.constant;
 
 import static util.Reader.*;
 

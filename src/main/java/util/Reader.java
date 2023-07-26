@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-import static common.constants.CommonConstants.EXECUTION_ENV_NAME;
+import static common.constant.CommonConstants.EXECUTION_ENV_NAME;
 
 /**
  * Project Name    : appium-java-mobile-automation-demo

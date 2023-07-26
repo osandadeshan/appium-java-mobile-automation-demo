@@ -1,4 +1,4 @@
-package screens;
+package screen;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

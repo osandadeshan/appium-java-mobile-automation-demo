@@ -1,4 +1,4 @@
-package screens;
+package screen;
 
 import io.appium.java_client.MobileBy;
 import org.openqa.selenium.WebDriver;

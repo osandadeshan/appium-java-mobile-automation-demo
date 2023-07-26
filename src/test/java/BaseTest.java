@@ -11,8 +11,8 @@ import org.testng.annotations.Listeners;
 import util.driver.MobileDriverFactory;
 import util.driver.MobileDriverService;
 
-import static common.constants.CommonConstants.EXECUTION_ENV_NAME;
-import static common.constants.CommonConstants.MOBILE_PLATFORM_NAME;
+import static common.constant.CommonConstants.EXECUTION_ENV_NAME;
+import static common.constant.CommonConstants.MOBILE_PLATFORM_NAME;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static util.driver.MobileDriverHolder.getDriver;
 import static util.driver.MobileDriverHolder.setDriver;
@@ -28,8 +28,7 @@ import static util.driver.MobileDriverHolder.setDriver;
 
 @Listeners(TestAnalyzeReportListener.class)
 public class BaseTest {
-    private final MobileDriverFactory driverFactory = new MobileDriverFactory();
-    private final MobileDriverService driverService = driverFactory.getDriverService();
+    private final MobileDriverService driverService = new MobileDriverFactory().getDriverService();
     private final Logger logger = LogManager.getLogger();
 
     @BeforeSuite

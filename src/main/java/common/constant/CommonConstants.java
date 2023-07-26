@@ -1,9 +1,9 @@
-package common.constants;
+package common.constant;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import static common.constants.DriverConstants.ANDROID;
+import static common.constant.DriverConstants.ANDROID;
 
 /**
  * Project Name    : appium-java-mobile-automation-demo

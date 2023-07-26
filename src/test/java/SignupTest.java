@@ -1,7 +1,7 @@
 import org.testng.annotations.Test;
 
-import static common.constants.AlertConstants.SIGNUP_ALERT;
-import static common.constants.LoginConstants.PASSWORD;
+import static common.constant.AlertConstants.SIGNUP_ALERT;
+import static common.constant.LoginConstants.PASSWORD;
 import static net.andreinc.mockneat.unit.user.Emails.emails;
 import static org.testng.Assert.assertEquals;
 

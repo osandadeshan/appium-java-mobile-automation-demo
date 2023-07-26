@@ -1,8 +1,8 @@
 import org.testng.annotations.Test;
 
-import static common.constants.AlertConstants.LOGIN_ALERT;
-import static common.constants.LoginConstants.EMAIL_ADDRESS;
-import static common.constants.LoginConstants.PASSWORD;
+import static common.constant.AlertConstants.LOGIN_ALERT;
+import static common.constant.LoginConstants.EMAIL_ADDRESS;
+import static common.constant.LoginConstants.PASSWORD;
 import static org.testng.Assert.assertEquals;
 
 /**

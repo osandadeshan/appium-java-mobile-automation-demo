@@ -1,8 +1,8 @@
 package common;
 
 import org.openqa.selenium.WebDriver;
-import screens.BaseScreen;
-import screens.uicomponents.AlertScreen;
+import screen.BaseScreen;
+import screen.uicomponent.AlertScreen;
 
 /**
  * Project Name    : appium-java-mobile-automation-demo

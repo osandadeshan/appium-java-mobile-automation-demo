@@ -9,7 +9,7 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static common.constants.DriverConstants.*;
+import static common.constant.DriverConstants.*;
 import static io.appium.java_client.remote.MobileCapabilityType.*;
 import static java.util.concurrent.TimeUnit.SECONDS;
 

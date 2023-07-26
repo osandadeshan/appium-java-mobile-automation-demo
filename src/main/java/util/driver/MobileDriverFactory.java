@@ -2,9 +2,9 @@ package util.driver;
 
 import java.security.InvalidParameterException;
 
-import static common.constants.CommonConstants.MOBILE_PLATFORM_NAME;
-import static common.constants.DriverConstants.ANDROID;
-import static common.constants.DriverConstants.IOS;
+import static common.constant.CommonConstants.MOBILE_PLATFORM_NAME;
+import static common.constant.DriverConstants.ANDROID;
+import static common.constant.DriverConstants.IOS;
 
 /**
  * Project Name    : appium-java-mobile-automation-demo
