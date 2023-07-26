@@ -14,10 +14,7 @@ on:
 
 jobs:
   build-and-test:
-    runs-on: macos-latest
-    strategy:
-      matrix:
-        api-level: [29]  
+    runs-on: macos-latest 
     steps:
     - uses: actions/checkout@v3
     
@@ -42,7 +39,7 @@ jobs:
     - name: Run Appium Tests
       uses: reactivecircus/android-emulator-runner@v2
       with:
-        api-level: ${{ matrix.api-level }}
+        api-level: 29
         script: mvn clean test -Pandroid,qa
       
     # Archive the "reports" Folder
