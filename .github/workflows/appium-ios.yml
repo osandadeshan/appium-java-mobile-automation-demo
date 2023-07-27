@@ -18,7 +18,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: Setup Java, Appium and iOS Driver
+    - name: Setup Java, Appium, and iOS Driver
       uses: actions/setup-java@v3
       with:
         java-version: '11'

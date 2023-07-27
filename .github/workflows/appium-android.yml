@@ -18,7 +18,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: Setup Java, Appium, Android Driver and iOS Driver
+    - name: Setup Java, Appium, and Android Driver
       uses: actions/setup-java@v3
       with:
         java-version: '11'
@@ -31,7 +31,6 @@ jobs:
             npm install -g appium@next
             appium -v
             appium driver install uiautomator2
-            appium driver install xcuitest
             appium &>/dev/null &
     
     - name: Run Appium Android Tests
