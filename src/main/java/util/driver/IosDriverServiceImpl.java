@@ -33,7 +33,7 @@ public class IosDriverServiceImpl implements MobileDriverService {
         capabilities.setCapability(AUTOMATION_NAME, IOS_AUTOMATION_NAME);
         capabilities.setCapability(PLATFORM_NAME, IOS);
         capabilities.setCapability(PLATFORM_VERSION, IOS_PLATFORM_VERSION);
-        capabilities.setCapability(UDID, "auto");
+        capabilities.setCapability(UDID, "4D68A690-30B7-42E9-BCAB-88DD8407D7D4");
         capabilities.setCapability(APP, new File(IOS_APP_FILE_PATH).getAbsolutePath());
         capabilities.setCapability("appium:shouldTerminateApp", IOS_SHOULD_TERMINATE_APP);
         capabilities.setCapability(NO_RESET, IOS_NO_RESET);
