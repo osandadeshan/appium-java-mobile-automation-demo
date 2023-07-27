@@ -31,6 +31,7 @@ jobs:
             npm install -g appium@next
             appium -v
             appium driver install xcuitest
+            xcrun simctl list devices
             appium &>/dev/null &
     
     - name: Run Appium iOS Tests
