@@ -17,12 +17,12 @@ on:
       - '**'
 
 jobs:
-  build:
+  test:
     runs-on: macos-latest 
     steps:
     - uses: actions/checkout@v3
 
-    - name: Setup Java, Appium, and Appium Android Driver
+    - name: Setup Java, Appium Server, and Appium Android Driver
       uses: actions/setup-java@v3
       with:
         java-version: '11'
@@ -38,22 +38,15 @@ jobs:
             appium
             appium &>/dev/null &
 
-  test:
-    runs-on: macos-latest
-    needs: build
-    
-    steps:
-      - uses: actions/checkout@v3
+    - name: Run Appium Android Tests
+      uses: reactivecircus/android-emulator-runner@v2
+      with:
+        api-level: 29
+        script: mvn clean test -Pandroid,qa
 
-      - name: Run Appium Android Tests
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 29
-          script: mvn clean test -Pandroid,qa
-
-      - name: Archive Test Reports
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: test-reports
-          path: reports
+    - name: Archive Test Reports
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-reports
+        path: reports
