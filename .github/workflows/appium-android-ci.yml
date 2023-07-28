@@ -29,10 +29,14 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
           cache: maven
-      - uses: actions/setup-node@v3
+          
+      - name: Setup Node, Java, Appium, and Android Driver    
+        uses: actions/setup-node@v3
         with:
          node-version: '20'
-      - run: |
+         
+      - name: Install dep
+        run: |
               npm install -g appium@next
               appium -v
               appium driver install uiautomator2
