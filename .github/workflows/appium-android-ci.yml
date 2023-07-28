@@ -21,7 +21,8 @@ jobs:
     runs-on: macos-latest 
     steps:
     - uses: actions/checkout@v3
-    
+
+    # Setup Java, Appium, and Android Driver
     - name: Setup Java, Appium, and Android Driver
       uses: actions/setup-java@v3
       with:
@@ -43,13 +44,24 @@ jobs:
     
     steps:
       - uses: actions/checkout@v3
-      
+
+      # Restore cached build dependencies
+      - name: Restore cached build dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.m2/repository
+            # Add other directories that you cached in the "build" job
+          key: ${{ runner.os }}-build-${{ hashFiles('pom.xml') }}
+
+      # Run Appium Android Tests
       - name: Run Appium Android Tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
           script: mvn clean test -Pandroid,qa
 
+      # Archive Test Reports
       - name: Archive Test Reports
         if: always()
         uses: actions/upload-artifact@v3
