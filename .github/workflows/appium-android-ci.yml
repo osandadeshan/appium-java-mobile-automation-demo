@@ -58,6 +58,10 @@ jobs:
           node -v
           echo "NPM version:"
           npm -v
+          echo "Appium version:"
+          appium -v
+          echo "Appium drivers:"
+          appium driver list
 
       - name: Execute regression test suite
         run: mvn clean test -Pandroid,qa
