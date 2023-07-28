@@ -17,12 +17,12 @@ on:
       - '**'
 
 jobs:
-  test:
+  build-and-test:
     runs-on: macos-latest 
     steps:
     - uses: actions/checkout@v3
-
-    - name: Setup Java, Appium Server, and Appium Android Driver
+    
+    - name: Setup Java, Appium, and Android Driver
       uses: actions/setup-java@v3
       with:
         java-version: '11'
@@ -35,15 +35,14 @@ jobs:
             npm install -g appium@next
             appium -v
             appium driver install uiautomator2
-            appium
             appium &>/dev/null &
-
+    
     - name: Run Appium Android Tests
       uses: reactivecircus/android-emulator-runner@v2
       with:
         api-level: 29
         script: mvn clean test -Pandroid,qa
-
+      
     - name: Archive Test Reports
       if: always()
       uses: actions/upload-artifact@v3
