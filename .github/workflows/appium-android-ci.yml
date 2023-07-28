@@ -55,10 +55,6 @@ jobs:
           node -v
           echo "NPM version:"
           npm -v
-          echo "Appium version:"
-          appium -v
-          echo "Appium drivers:"
-          appium driver list
 
       - name: Run Appium Android Tests
         uses: reactivecircus/android-emulator-runner@v2
