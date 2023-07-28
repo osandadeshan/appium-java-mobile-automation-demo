@@ -17,33 +17,47 @@ on:
       - '**'
 
 jobs:
+  build:
+    runs-on: macos-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Java, Appium, and Android Driver
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+          cache: maven
+      - uses: actions/setup-node@v3
+        with:
+         node-version: '20'
+      - run: |
+              npm install -g appium@next
+              appium -v
+              appium driver install uiautomator2
+      
   test:
-    runs-on: macos-latest 
+    runs-on: macos-latest
+    needs: build
+    
     steps:
     - uses: actions/checkout@v3
     
-    - name: Setup Java, Appium, and Android Driver
-      uses: actions/setup-java@v3
-      with:
-        java-version: '11'
-        distribution: 'temurin'
-        cache: maven
+    - name: Start Appium server
     - uses: actions/setup-node@v3
       with:
        node-version: '20'
     - run: |
-            npm install -g appium@next
-            appium -v
-            appium driver install uiautomator2
             appium &>/dev/null &
     
-    - name: Run Appium Android Tests
+    - name: Execute Android test suite
       uses: reactivecircus/android-emulator-runner@v2
       with:
         api-level: 29
         script: mvn clean test -Pandroid,qa
       
-    - name: Archive Test Reports
+    - name: Archive test reports
       if: always()
       uses: actions/upload-artifact@v3
       with:
