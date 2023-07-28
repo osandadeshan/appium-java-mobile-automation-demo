@@ -23,19 +23,16 @@ jobs:
       steps:
         - uses: actions/checkout@v3
 
-        - name: Set up JDK 11
+        - name: Setup Java, Node, Appium, and Appium Android Driver
           uses: actions/setup-java@v3
           with:
             java-version: '11'
             distribution: 'temurin'
-        
-        - name: Set up NodeJS
-          uses: actions/setup-node@v3
+            cache: maven
+        - uses: actions/setup-node@v3
           with:
            node-version: '20'
-           
-        - name: Install Appium and Appium Android Driver
-          run: |
+        - run: |
                 npm install -g appium@next
                 appium -v
                 appium driver install uiautomator2
