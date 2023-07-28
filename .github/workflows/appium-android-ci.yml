@@ -63,8 +63,11 @@ jobs:
           echo "Appium drivers:"
           appium driver list
 
-      - name: Execute regression test suite
-        run: mvn clean test -Pandroid,qa
+      - name: Run Appium Android Tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          script: mvn clean test -Pandroid,qa
 
       - name: Archive test reports
         if: always()
