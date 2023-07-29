@@ -23,19 +23,19 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - name: Setup Java, Appium, and Android Driver
+      - name: Setup Java
         uses: actions/setup-java@v3
         with:
           java-version: '11'
           distribution: 'temurin'
           cache: maven
           
-      - name: Setup Node, Java, Appium, and Android Driver    
+      - name: Setup Node  
         uses: actions/setup-node@v3
         with:
           node-version: '20'
           
-      - name: Install dependencies
+      - name: Install Appium Server and Android Driver  
         run: |
           npm install -g appium@next
           appium -v
@@ -49,9 +49,6 @@ jobs:
       - uses: actions/checkout@v3
       
       - name: Start Appium server
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'
         run: |
           appium &>/dev/null &
     
