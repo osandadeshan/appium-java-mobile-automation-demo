@@ -16,13 +16,10 @@ on:
     branches:
       - '**'
 
-env:
-  APPIUM_VERSION: 'next'
-  APPIUM_DRIVER: 'uiautomator2'
-
 jobs:
   build:
     runs-on: macos-latest
+
     steps:
       - uses: actions/checkout@v3
 
@@ -38,20 +35,12 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Cache Appium installation
-        id: cache-appium
-        uses: actions/cache@v2
-        with:
-          path: ${{ env.HOME }}/.npm
-          key: ${{ runner.os }}-appium-${{ env.APPIUM_VERSION }}-${{ env.APPIUM_DRIVER }}
-          restore-keys: ${{ runner.os }}-appium-${{ env.APPIUM_VERSION }}-
-
+      # Install Appium server and Android driver
       - name: Install Appium server and Appium Android driver
-        if: steps.cache-appium.outputs.cache-hit != 'true'
         run: |
-          npm install -g appium@${APPIUM_VERSION}
+          npm install -g appium@next
           appium -v
-          appium driver install ${APPIUM_DRIVER}
+          appium driver install uiautomator2
 
   test:
     runs-on: macos-latest
@@ -63,8 +52,7 @@ jobs:
       - name: Start Appium server
         run: |
           appium &>/dev/null &
-          sleep 20
-          appium -v
+          sleep 30
 
       - name: Execute Android test suite
         uses: reactivecircus/android-emulator-runner@v2
