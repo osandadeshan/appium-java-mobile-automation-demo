@@ -30,16 +30,10 @@ jobs:
           distribution: 'temurin'
           cache: maven
           
-      - name: Setup Node  
+      - name: Setup NodeJS  
         uses: actions/setup-node@v3
         with:
           node-version: '20'
-          
-      - name: Install Appium Server and Android Driver  
-        run: |
-          npm install -g appium@next
-          appium -v
-          appium driver install uiautomator2
 
   test:
     runs-on: macos-latest
@@ -48,6 +42,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
+      - name: Install Appium server and Appium android driver  
+        run: |
+          npm install -g appium@next
+          appium -v
+          appium driver install uiautomator2
+          
       - name: Start Appium server
         run: |
           appium &>/dev/null &
