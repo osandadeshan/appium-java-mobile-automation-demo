@@ -1,11 +1,3 @@
-# GitHub Actions Workflow for Appium Java Android Application Automation
-
-# This GitHub Actions workflow is designed to build a Maven project and execute Appium tests using an Android mobile device.
-# The automation project utilizes TestNG, Appium, Maven, and Java as its core technologies.
-
-# For more details on building and testing Java projects with Maven using GitHub Actions, please refer to the official documentation:
-# https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
-
 name: Appium Java Android Application Automation CI
 
 on:
@@ -39,8 +31,8 @@ jobs:
       - name: Install Appium server and Appium Android driver
         run: |
           npm install -g appium@next
-          appium -v
-          appium driver install uiautomator2
+          echo "APPIUM_VERSION=next" >> $GITHUB_ENV
+          echo "APPIUM_DRIVER=uiautomator2" >> $GITHUB_ENV
 
   test:
     runs-on: macos-latest
@@ -49,10 +41,18 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      # Access environment variables for Appium and Android driver
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          
+      - run: echo $APPIUM_VERSION
+      - run: echo $APPIUM_DRIVER
+
       - name: Start Appium server
         run: |
           appium &>/dev/null &
-          sleep 30
 
       - name: Execute Android test suite
         uses: reactivecircus/android-emulator-runner@v2
