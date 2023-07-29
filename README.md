@@ -2,6 +2,8 @@
 
 This project serves as a boilerplate for automating both Android and iOS mobile applications using a single codebase with TestNG and the Appium library.
 
+[![Appium Java Android Application Automation CI](https://github.com/osandadeshan/appium-java-mobile-automation-demo/actions/workflows/appium-android-ci.yml/badge.svg)](https://github.com/osandadeshan/appium-java-mobile-automation-demo/actions/workflows/appium-android-ci.yml)
+
 ## Prerequisites
 1. Java
 2. Maven
