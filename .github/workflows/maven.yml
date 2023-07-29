@@ -63,6 +63,7 @@ jobs:
       - name: Start Appium server
         run: |
           appium &>/dev/null &
+          sleep 20
 
       - name: Execute Android test suite
         uses: reactivecircus/android-emulator-runner@v2
