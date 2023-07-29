@@ -33,37 +33,37 @@ jobs:
       - name: Setup Node, Java, Appium, and Android Driver    
         uses: actions/setup-node@v3
         with:
-         node-version: '20'
-         
-      - name: Install dep
+          node-version: '20'
+          
+      - name: Install dependencies
         run: |
-              npm install -g appium@next
-              appium -v
-              appium driver install uiautomator2
-      
+          npm install -g appium@next
+          appium -v
+          appium driver install uiautomator2
+
   test:
     runs-on: macos-latest
     needs: build
     
     steps:
-    - uses: actions/checkout@v3
-    
-    - name: Start Appium server
-    - uses: actions/setup-node@v3
-      with:
-       node-version: '20'
-    - run: |
-            appium &>/dev/null &
-    
-    - name: Execute Android test suite
-      uses: reactivecircus/android-emulator-runner@v2
-      with:
-        api-level: 29
-        script: mvn clean test -Pandroid,qa
+      - uses: actions/checkout@v3
       
-    - name: Archive test reports
-      if: always()
-      uses: actions/upload-artifact@v3
-      with:
-        name: test-reports
-        path: reports
+      - name: Start Appium server
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+        run: |
+          appium &>/dev/null &
+    
+      - name: Execute Android test suite
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          script: mvn clean test -Pandroid,qa
+      
+      - name: Archive test reports
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-reports
+          path: reports
