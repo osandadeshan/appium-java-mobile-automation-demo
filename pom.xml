@@ -20,6 +20,7 @@
         <mockneat.version>0.4.8</mockneat.version>
         <log4j.api.version>2.20.0</log4j.api.version>
         <log4j.core.version>2.20.0</log4j.core.version>
+        <smoke.suite.testng.xml>src/test/resources/smoke-suite.xml</smoke.suite.testng.xml>
         <regression.suite.testng.xml>src/test/resources/regression-suite.xml</regression.suite.testng.xml>
     </properties>
 
@@ -31,6 +32,7 @@
     </repositories>
 
     <profiles>
+        <!-- Platform profiles -->
         <profile>
             <id>android</id>
             <activation>
@@ -46,6 +48,7 @@
                 <platform>ios</platform>
             </properties>
         </profile>
+        <!-- Environment profiles -->
         <profile>
             <id>dev</id>
             <activation>
@@ -78,6 +81,39 @@
             <properties>
                 <env>prod</env>
             </properties>
+        </profile>
+        <!-- Test suite profiles -->
+        <profile>
+            <id>smoke-test</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <suiteXmlFiles>
+                                <suiteXmlFile>${smoke.suite.testng.xml}</suiteXmlFile>
+                            </suiteXmlFiles>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>regression-test</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <suiteXmlFiles>
+                                <suiteXmlFile>${regression.suite.testng.xml}</suiteXmlFile>
+                            </suiteXmlFiles>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
     </profiles>
 

@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Mobile Automation Demo Regression Test Suite">
+    <test name="Regression Test">
+        <classes>
+            <class name="SignupTest">
+                <methods>
+                    <include name="testSignup"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

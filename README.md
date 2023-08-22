@@ -36,12 +36,12 @@ Note: Environment Variables
 
 
 2. Using Command Line
-   * To run Android tests in QA environment
+   * To run the smoke test suite in Android against the QA environment
 
-     `mvn clean test -Pandroid,qa`
-   * To run iOS tests in UAT environment
+     `mvn clean test -Pandroid,qa,smoke-test`
+   * To run the regression test suite in iOS against the UAT environment
 
-     `mvn clean test -Pios,uat`
+     `mvn clean test -Pios,uat,regression-test`
 
 **Note**: By default, if no Maven profiles are selected, the tests will be executed on the `android` platform and in the `dev` environment.
 
