@@ -60,7 +60,7 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
-          script: mvn clean test -Pandroid,qa
+          script: mvn clean test -Pandroid,qa,smoke-test
       
       - name: Archive test reports
         if: always()
