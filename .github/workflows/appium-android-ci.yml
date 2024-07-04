@@ -63,7 +63,7 @@ jobs:
           api-level: 29
           script: mvn clean test -Pandroid,qa,smoke-test
 
-      - name: Archive test reports
+      - name: Archive smoke test reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -99,7 +99,7 @@ jobs:
           api-level: 29
           script: mvn clean test -Pandroid,qa,regression-test
 
-      - name: Archive test reports
+      - name: Archive regression test reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
