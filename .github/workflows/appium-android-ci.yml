@@ -15,11 +15,6 @@ on:
   pull_request:
     branches:
       - '**'
-  workflow_dispatch:
-      inputs:
-        reason:
-          description: 'Reason to trigger the CI manually'
-          required: true
 
 jobs:
   build:
@@ -27,14 +22,15 @@ jobs:
     
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
           java-version: '11'
           distribution: 'temurin'
-          
-      - name: Setup NodeJS  
+          cache: maven
+
+      - name: Setup NodeJS
         uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -45,22 +41,29 @@ jobs:
     
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Install Appium server and Appium android driver  
+
+      - name: Install Appium server and Appium android driver
         run: |
           npm install -g appium
           appium -v
           appium driver install uiautomator2
-          
+
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
       - name: Start Appium server
         run: |
           appium &>/dev/null &
-    
+
       - name: Execute Android test suite
-        uses: moatazeldebsy/appium-server-gitHub-action@V1.0.4
+        uses: reactivecircus/android-emulator-runner@v2
         with:
+          api-level: 29
           script: mvn clean test -Pandroid,qa,smoke-test
-      
+
       - name: Archive test reports
         if: always()
         uses: actions/upload-artifact@v4
