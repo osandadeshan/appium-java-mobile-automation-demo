@@ -15,6 +15,11 @@ on:
   pull_request:
     branches:
       - '**'
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Reason to trigger the CI manually'
+        required: true
 
 jobs:
   build:
