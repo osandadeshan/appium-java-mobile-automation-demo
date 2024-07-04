@@ -16,55 +16,92 @@ on:
     branches:
       - '**'
   workflow_dispatch:
-      inputs:
-        reason:
-          description: 'Reason to trigger the CI manually'
-          required: true
+    inputs:
+      reason:
+        description: 'Reason to trigger the CI manually'
+        required: true
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v3
-      
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Setup Java
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version: '11'
           distribution: 'temurin'
-          
-      - name: Setup NodeJS  
-        uses: actions/setup-node@v3
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-  test:
-    runs-on: macos-latest
+  smoke-test:
+    runs-on: ubuntu-latest
     needs: build
-    
+
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: Install Appium server and Appium android driver  
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Appium server and Appium android driver
         run: |
-          npm install -g appium@next
+          npm install -g appium
           appium -v
           appium driver install uiautomator2
-          
-      - name: Start Appium server
+
+      - name: Enable KVM
         run: |
-          appium &>/dev/null &
-    
-      - name: Execute Android test suite
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
+      - name: Execute Android smoke test suite
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
           script: mvn clean test -Pandroid,qa,smoke-test
-      
-      - name: Archive test reports
+
+      - name: Archive smoke test reports
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          name: test-reports
+          name: smoke-test-reports
+          path: reports
+
+  regression-test:
+    runs-on: ubuntu-latest
+    needs: smoke-test
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Appium server and Appium android driver
+        run: |
+          npm install -g appium
+          appium -v
+          appium driver install uiautomator2
+
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
+      - name: Execute Android regression test suite
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          script: mvn clean test -Pandroid,qa,regression-test
+
+      - name: Archive regression test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-test-reports
           path: reports

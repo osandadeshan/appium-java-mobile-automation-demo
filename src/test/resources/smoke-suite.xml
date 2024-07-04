@@ -2,7 +2,7 @@
 <suite name="Mobile Automation Demo Smoke Test Suite">
     <test name="Smoke Test">
         <classes>
-            <class name="LoginTest">
+            <class name="com.appium.example.test.LoginTest">
                 <methods>
                     <include name="testValidLogin"/>
                 </methods>
