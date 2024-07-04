@@ -12,9 +12,9 @@ This project serves as a boilerplate for automating both Android and iOS mobile 
 2. Download and Install [Android Studio](https://developer.android.com/codelabs/basic-android-kotlin-compose-install-android-studio "Android Studio")
 3. Create a new system variable for `ANDROID_HOME` pointed to the Android SDK location
 4. Update the system path variable with `ANDROID_HOME\platform-tools`
-5. Install Appium 2.0
+5. Install Appium 2.0 (You may refer to the official [Appium documentation](https://appium.io/docs/en/latest/quickstart/install/))
 
-   `npm i -g appium@next`
+   `npm install -g appium`
 
 6. Install Appium Drivers 
 
@@ -53,4 +53,4 @@ Note: Environment Variables
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/License_icon-mit-2.svg/2000px-License_icon-mit-2.svg.png" alt="MIT License" width="100" height="100"/> [MIT License](https://opensource.org/licenses/MIT)
 
 ## Copyright
-Copyright 2023 [MaxSoft](https://maxsoftlk.github.io/).
+Copyright 2024 [MaxSoft](https://maxsoftlk.github.io/).
