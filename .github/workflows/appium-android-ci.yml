@@ -35,7 +35,7 @@ jobs:
           distribution: 'temurin'
           
       - name: Setup NodeJS  
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
 
@@ -48,7 +48,7 @@ jobs:
       
       - name: Install Appium server and Appium android driver  
         run: |
-          npm install -g appium@next
+          npm install -g appium
           appium -v
           appium driver install uiautomator2
           
