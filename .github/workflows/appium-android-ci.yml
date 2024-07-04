@@ -18,7 +18,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     
     steps:
       - name: Checkout code
@@ -35,6 +35,11 @@ jobs:
         with:
           node-version: '20'
 
+  smoke-test:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
       - name: Install Appium server and Appium android driver
         run: |
           npm install -g appium
@@ -47,12 +52,6 @@ jobs:
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
 
-stages:
-  - name: smoke-test
-    runs-on: ubuntu-latest
-    needs: build
-    
-    steps:
       - name: Start Appium server
         run: |
           appium &>/dev/null &
@@ -70,11 +69,23 @@ stages:
           name: smoke-test-reports
           path: reports
 
-  - name: regression-test
+  regression-test:
     runs-on: ubuntu-latest
     needs: smoke-test
 
     steps:
+      - name: Install Appium server and Appium android driver
+        run: |
+          npm install -g appium
+          appium -v
+          appium driver install uiautomator2
+
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
       - name: Start Appium server
         run: |
           appium &>/dev/null &
