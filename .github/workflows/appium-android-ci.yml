@@ -40,6 +40,9 @@ jobs:
     needs: build
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Install Appium server and Appium android driver
         run: |
           npm install -g appium
@@ -74,6 +77,9 @@ jobs:
     needs: smoke-test
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Install Appium server and Appium android driver
         run: |
           npm install -g appium
