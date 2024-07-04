@@ -2,9 +2,14 @@
 <suite name="Mobile Automation Demo Regression Test Suite">
     <test name="Regression Test">
         <classes>
-            <class name="SignupTest">
+            <class name="com.appium.example.test.SignupTest">
                 <methods>
                     <include name="testSignup"/>
+                </methods>
+            </class>
+            <class name="com.appium.example.test.SwipeTest">
+                <methods>
+                    <include name="testYouFoundMeLogo"/>
                 </methods>
             </class>
         </classes>

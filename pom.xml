@@ -4,20 +4,23 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.maxsoft.testautomationtutorials</groupId>
+    <groupId>com.appium.example</groupId>
     <artifactId>appium-java-mobile-automation-demo</artifactId>
     <version>1.0.0</version>
 
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <maven.surefire.plugin.version>3.0.0-M5</maven.surefire.plugin.version>
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
         <maven.shade.plugin.version>3.5.0</maven.shade.plugin.version>
-        <appium.java.client.version>7.0.0</appium.java.client.version>
-        <testng.version>7.0.0</testng.version>
+        <appium.java.client.version>9.2.3</appium.java.client.version>
+        <testng.version>7.10.2</testng.version>
         <maxsoft.testng.test.results.analyzer.version>1.2.0</maxsoft.testng.test.results.analyzer.version>
         <mockneat.version>0.4.8</mockneat.version>
+        <commons.io.version>2.16.1</commons.io.version>
+        <extent.report.version>5.1.1</extent.report.version>
+        <lombok.version>1.18.18</lombok.version>
         <log4j.api.version>2.20.0</log4j.api.version>
         <log4j.core.version>2.20.0</log4j.core.version>
         <smoke.suite.testng.xml>src/test/resources/smoke-suite.xml</smoke.suite.testng.xml>
@@ -146,6 +149,13 @@
                 <configuration>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
             <plugin>
@@ -181,7 +191,6 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>net.andreinc</groupId>
@@ -189,9 +198,14 @@
             <version>${mockneat.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.github.osandadeshan</groupId>
-            <artifactId>maxsoft-testng-test-results-analyzer</artifactId>
-            <version>${maxsoft.testng.test.results.analyzer.version}</version>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons.io.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>${extent.report.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
