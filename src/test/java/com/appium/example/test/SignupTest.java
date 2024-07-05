@@ -11,7 +11,7 @@ import static org.testng.Assert.assertEquals;
 
 public class SignupTest extends BaseTest {
     @Feature(SIGN_UP)
-    @Test(description = "Verify that a user can login to the application with valid credentials")
+    @Test(description = "Verify that a user can signup to the application")
     public void testSignup() {
         screen().getNavigationBarScreen()
                 .tapOnLoginIcon();

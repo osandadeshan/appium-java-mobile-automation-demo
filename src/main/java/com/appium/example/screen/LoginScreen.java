@@ -8,15 +8,15 @@ public class LoginScreen extends BaseScreen {
         super(driver);
     }
 
-    public LoginScreen tapOnSignUpContainer() {
-        tap(AppiumBy.accessibilityId("button-sign-up-container"));
-        return this;
-    }
-
     public void login(String emailAddress, String password) {
         inputEmailAddress(emailAddress);
         inputPassword(password);
         tapOnLoginButton();
+    }
+
+    public LoginScreen tapOnSignUpContainer() {
+        tap(AppiumBy.accessibilityId("button-sign-up-container"));
+        return this;
     }
 
     public void signUp(String emailAddress, String password, String confirmPassword) {

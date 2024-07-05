@@ -59,7 +59,7 @@ public class ExtentReportService {
         } else if (iTestResult.getStatus() == SUCCESS) {
             appendSuccessDetails(test, iTestResult, timestamp);
         } else {
-            logger.warn("Test result for the test method '{}' is unknown", iTestResult.getMethod());
+            logger.warn("Test result for the test method '{}' is unknown.", iTestResult.getMethod());
         }
 
         addFeature(iTestResult, test);
@@ -141,7 +141,7 @@ public class ExtentReportService {
                 File finalDestination = new File(destination);
                 FileUtils.copyFile(source, finalDestination);
             } catch (Exception e) {
-                logger.error("Failed to embed the screenshot to the report.");
+                logger.error("Failed to embed the screenshot to the report!");
                 logger.error(e.getMessage());
             }
         }

@@ -34,7 +34,7 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestSkipped(ITestResult iTestResult) {
-        extentReportService.updateExtentReport(iTestResult, null);
+        extentReportService.updateExtentReport(iTestResult, formattedTimestamp);
     }
 
     @Override
