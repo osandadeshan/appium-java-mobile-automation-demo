@@ -1,6 +1,6 @@
 # Mobile Application Automation Using Appium & TestNG (For iOS & Android)
 
-![image](https://github.com/osandadeshan/appium-java-mobile-automation-demo/assets/9147189/585c9840-0885-4253-8dfa-de994b364da4)
+![image](https://github.com/osandadeshan/appium-java-mobile-automation-demo/assets/9147189/5f0893ae-f457-46d9-8efe-1a3f7e065304)
 
 This project serves as a boilerplate for automating Android and iOS mobile applications using a single codebase with TestNG and the Appium library. It provides cross-platform support, easy setup, and comes with examples to help you quickly get started with writing and executing mobile automation tests. Feel free to clone the repository, explore the sample test scripts, and contribute to the project.
 
