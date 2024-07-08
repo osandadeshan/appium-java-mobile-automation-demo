@@ -52,14 +52,18 @@ public class ExtentReportService {
     public void updateExtentReport(ITestResult iTestResult, String timestamp) {
         ExtentTest test = appendTestInformation(iTestResult);
 
-        if (iTestResult.getStatus() == FAILURE) {
-            appendFailureDetails(test, iTestResult, timestamp);
-        } else if (iTestResult.getStatus() == SKIP) {
-            appendSkipDetails(test, iTestResult, timestamp);
-        } else if (iTestResult.getStatus() == SUCCESS) {
-            appendSuccessDetails(test, iTestResult, timestamp);
-        } else {
-            logger.warn("Test result for the test method '{}' is unknown.", iTestResult.getMethod());
+        switch (iTestResult.getStatus()) {
+            case FAILURE:
+                appendFailureDetails(test, iTestResult, timestamp);
+                break;
+            case SKIP:
+                appendSkipDetails(test, iTestResult, timestamp);
+                break;
+            case SUCCESS:
+                appendSuccessDetails(test, iTestResult, timestamp);
+                break;
+            default:
+                logger.warn("Test result for the test method '{}' is unknown.", iTestResult.getMethod());
         }
 
         addFeature(iTestResult, test);
