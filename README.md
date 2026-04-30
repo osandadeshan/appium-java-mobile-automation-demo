@@ -49,6 +49,62 @@ Note: Environment Variables
 
 **Note**: By default, if no Maven profiles are selected, the tests will be executed on the `android` platform and in the `dev` environment.
 
+## Local SonarQube Analysis
+
+### Prerequisites
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) must be running
+
+### 1. Start SonarQube
+```bash
+docker run -d --name sonarqube -p 9001:9000 \
+  -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true \
+  sonarqube:lts-community
+```
+
+Wait until SonarQube is ready (≈ 60 s):
+```bash
+# Endpoint returns {"status":"UP"} when ready
+curl http://localhost:9001/api/system/status
+```
+
+Then open http://localhost:9001 in your browser (default login: `admin` / `admin`).
+
+### 2. Generate an analysis token
+```bash
+curl -s -u admin:<password> -X POST "http://localhost:9001/api/user_tokens/generate" \
+  -d "name=local-scan" \
+  -d "type=GLOBAL_ANALYSIS_TOKEN"
+```
+Copy the `token` value from the JSON response.
+
+### 3. Run the scan
+```bash
+mvn sonar:sonar \
+  -Dsonar.host.url=http://localhost:9001 \
+  -Dsonar.login=<your-token> \
+  -Dsonar.projectKey=appium-java-mobile-automation-demo \
+  -Dsonar.projectName="Appium Java Mobile Automation Demo" \
+  -Dsonar.java.binaries=. \
+  -Dsonar.java.source=11 \
+  -Dsonar.scm.disabled=true \
+  -DskipTests=true
+```
+
+After a successful run the dashboard is available at:
+**http://localhost:9001/dashboard?id=appium-java-mobile-automation-demo**
+
+### Notes
+- The `sonar-maven-plugin` (version `3.11.0.3922`) and required `pom.xml` properties are already configured.
+- `sonar.scm.disabled=true` is required when running inside a **git worktree**.
+- `sonar.java.binaries=.` allows scanning without a prior full compilation.
+- If you use **Java 21+**, the `maven-compiler-plugin` must be `3.13.0+` and Lombok must be `1.18.36+`
+  (both already set in `pom.xml`).
+
+### Stop / remove the container
+```bash
+docker stop sonarqube && docker rm sonarqube
+```
+
 ## Tutorials
 - [Appium Mobile App Automation — Tutorial 1](https://medium.com/automationmaster/appium-mobile-app-automation-406bf8b0fd80)
 - [Appium Mobile App Automation — Tutorial 2](https://medium.com/automationmaster/appium-mobile-app-automation-tutorial-2-527d6d78998a)

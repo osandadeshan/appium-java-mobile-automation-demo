@@ -6,6 +6,8 @@ import org.testng.ITestResult;
 import java.lang.reflect.Method;
 
 public class AnnotationReader {
+    private AnnotationReader() {}
+
     public static String getFeatureInTestMethod(ITestResult iTestResult) {
         String featureName = null;
         Method method = iTestResult.getMethod().getConstructorOrMethod().getMethod();

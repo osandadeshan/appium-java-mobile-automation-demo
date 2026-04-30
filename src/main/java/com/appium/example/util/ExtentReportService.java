@@ -25,6 +25,7 @@ public class ExtentReportService {
     private static final ExtentReports extentReports = new ExtentReports();
     public static final String FILE_SEPARATOR = File.separator;
     private static final Logger logger = LogManager.getLogger();
+    private static final String SCREENSHOT_NODE = "<b> Screenshot: </b>";
 
     public void initializeExtentReporter(String timestamp) {
         ExtentSparkReporter sparkAllTestsReporter = new ExtentSparkReporter(EXTENT_FULL_REPORT_DIRECTORY
@@ -91,7 +92,7 @@ public class ExtentReportService {
         String screenshotPath = takeScreenshotAndReturnFilePath(iTestResult.getName(), timestamp);
 
         if (screenshotPath != null) {
-            test.createNode("<b> Screenshot: </b>")
+            test.createNode(SCREENSHOT_NODE)
                     .pass(MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
         }
     }
@@ -104,7 +105,7 @@ public class ExtentReportService {
                 .fail(iTestResult.getThrowable());
 
         if (screenshotPath != null) {
-            test.createNode("<b> Screenshot: </b>")
+            test.createNode(SCREENSHOT_NODE)
                     .fail(MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
         }
     }
@@ -117,7 +118,7 @@ public class ExtentReportService {
                 .skip(iTestResult.getThrowable());
 
         if (screenshotPath != null) {
-            test.createNode("<b> Screenshot: </b>")
+            test.createNode(SCREENSHOT_NODE)
                     .skip(MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
         }
     }

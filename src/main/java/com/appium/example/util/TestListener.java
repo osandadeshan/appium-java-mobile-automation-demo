@@ -8,37 +8,39 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class TestListener implements ITestListener {
-    private static final String formattedTimestamp = LocalDateTime.now()
+    private static final String FORMATTED_TIMESTAMP = LocalDateTime.now()
             .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss"));
     private ExtentReportService extentReportService;
 
     @Override
     public void onStart(ITestContext iTestContext) {
         extentReportService = new ExtentReportService();
-        extentReportService.initializeExtentReporter(formattedTimestamp);
+        extentReportService.initializeExtentReporter(FORMATTED_TIMESTAMP);
     }
 
     @Override
     public void onTestStart(ITestResult iTestResult) {
+        // This callback is intentionally left empty.
     }
 
     @Override
     public void onTestSuccess(ITestResult iTestResult) {
-        extentReportService.updateExtentReport(iTestResult, formattedTimestamp);
+        extentReportService.updateExtentReport(iTestResult, FORMATTED_TIMESTAMP);
     }
 
     @Override
     public void onTestFailure(ITestResult iTestResult) {
-        extentReportService.updateExtentReport(iTestResult, formattedTimestamp);
+        extentReportService.updateExtentReport(iTestResult, FORMATTED_TIMESTAMP);
     }
 
     @Override
     public void onTestSkipped(ITestResult iTestResult) {
-        extentReportService.updateExtentReport(iTestResult, formattedTimestamp);
+        extentReportService.updateExtentReport(iTestResult, FORMATTED_TIMESTAMP);
     }
 
     @Override
     public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
+        // This callback is intentionally left empty.
     }
 
     @Override

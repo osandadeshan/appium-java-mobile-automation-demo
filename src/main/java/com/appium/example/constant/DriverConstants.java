@@ -5,12 +5,15 @@ import java.time.Duration;
 import static com.appium.example.util.PropertyReader.*;
 
 public class DriverConstants {
+    private DriverConstants() {}
+
     // Appium Constants
     public static final String APPIUM_SERVER_IP = getAppiumConfig("appium_server_ip");
     public static final int APPIUM_SERVER_PORT = Integer.parseInt(getAppiumConfig("appium_server_port"));
     public static final Duration APPIUM_DRIVER_TIMEOUT = Duration.ofSeconds(
             Long.parseLong(getAppiumConfig("appium_driver_timeout_in_seconds"))
     );
+    public static final String ANDROID_SDK_ROOT = getAppiumConfig("android_sdk_root");
 
     // Android Constants
     public static final String ANDROID = "android";

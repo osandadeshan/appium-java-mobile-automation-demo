@@ -18,10 +18,11 @@ import java.time.Duration;
 import static com.appium.example.constant.CommonConstants.EXECUTION_ENV_NAME;
 import static com.appium.example.constant.CommonConstants.MOBILE_PLATFORM_NAME;
 import static com.appium.example.util.driver.MobileDriverHolder.getDriver;
+import static com.appium.example.util.driver.MobileDriverHolder.removeDriver;
 import static com.appium.example.util.driver.MobileDriverHolder.setDriver;
 
 @Listeners(TestListener.class)
-public class BaseTest {
+public abstract class BaseTest {
     private final MobileDriverService driverService = new MobileDriverFactory().getDriverService();
     private AppiumDriverLocalService appiumService;
     private final Logger logger = LogManager.getLogger();
@@ -52,5 +53,6 @@ public class BaseTest {
     public void closeApp() {
         driverService.closeDriver();
         driverService.stopAppiumService(appiumService);
+        removeDriver();
     }
 }

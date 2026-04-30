@@ -14,15 +14,15 @@ import static com.appium.example.constant.DriverConstants.ANDROID;
 
 public class BaseScreen {
     public final WebDriver driver;
-    public final WebDriverWait wait;
+    public final WebDriverWait driverWait;
 
     public BaseScreen(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        driverWait = new WebDriverWait(driver, Duration.ofSeconds(30));
     }
 
     public void waitUntilElementVisible(By by) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+        driverWait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
 
     public WebElement scrollToElement(String elementText) {

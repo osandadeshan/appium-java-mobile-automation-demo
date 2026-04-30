@@ -9,7 +9,7 @@ public class AlertScreen extends BaseScreen {
 
     public AlertScreen(WebDriver driver) {
         super(driver);
-        wait.until(ExpectedConditions.alertIsPresent());
+        driverWait.until(ExpectedConditions.alertIsPresent());
         alertText = driver.switchTo().alert().getText();
     }
 

@@ -6,9 +6,11 @@ import org.apache.logging.log4j.Logger;
 import static com.appium.example.constant.DriverConstants.ANDROID;
 
 public class CommonConstants {
-    private final static Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger();
 
-    private final static String DEV = "dev";
+    private static final String DEV = "dev";
+
+    private CommonConstants() {}
     public static final String MOBILE_PLATFORM_NAME = getPlatformName();
     public static final String EXECUTION_ENV_NAME = getEnvironmentName();
 

@@ -4,9 +4,12 @@ import com.appium.example.constant.CommonConstants;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UncheckedIOException;
 import java.util.Properties;
 
 public class PropertyReader {
+    private PropertyReader() {}
+
     public static String getAppiumConfig(String propertyName) {
         return getPropertyValue("appium.properties", propertyName);
     }
@@ -31,7 +34,7 @@ public class PropertyReader {
             properties.load(inputStream);
             propertyValue = properties.getProperty(propertyName);
         } catch (IOException ex) {
-            throw new RuntimeException(ex);
+            throw new UncheckedIOException(ex);
         }
 
         return propertyValue;
